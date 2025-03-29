@@ -2,7 +2,7 @@
 
 // Configuration - replace with your actual API key and settings
 const GPT_CONFIG = {
-    apiKey: "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", // This will be a placeholder
+    apiKey: "", // This will be a placeholder
     model: "gpt-4", // Or whichever model you're using
     endpoint: "https://api.openai.com/v1/chat/completions"
 };
