@@ -1,0 +1,889 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AllergyCompass | Your Personalized Food Allergy Navigator</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Sidebar Navigation -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <div class="logo">
+                    <i class="fas fa-compass"></i>
+                    <h1>AllergyCompass</h1>
+                </div>
+                <button id="mobile-toggle" class="mobile-toggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+            <nav class="sidebar-nav">
+                <ul>
+                    <li class="nav-item active" data-target="dashboard">
+                        <i class="fas fa-home"></i>
+                        <span>Dashboard</span>
+                    </li>
+                    <li class="nav-item" data-target="profile">
+                        <i class="fas fa-user-circle"></i>
+                        <span>My Allergy Profile</span>
+                    </li>
+                    <li class="nav-item" data-target="analyzer">
+                        <i class="fas fa-search"></i>
+                        <span>Food Analyzer</span>
+                    </li>
+                    <li class="nav-item" data-target="journal">
+                        <i class="fas fa-book-medical"></i>
+                        <span>Symptom Journal</span>
+                    </li>
+                    <li class="nav-item" data-target="resources">
+                        <i class="fas fa-file-medical"></i>
+                        <span>My Resources</span>
+                    </li>
+                    <li class="nav-item" data-target="settings">
+                        <i class="fas fa-cog"></i>
+                        <span>Settings</span>
+                    </li>
+                </ul>
+            </nav>
+            <div class="sidebar-footer">
+                <button class="btn-emergency">
+                    <i class="fas fa-exclamation-circle"></i>
+                    <span>Emergency Plan</span>
+                </button>
+            </div>
+        </aside>
+
+        <!-- Main Content Area -->
+        <main class="main-content">
+            <!-- Top Header -->
+            <header class="main-header">
+                <div class="header-search">
+                    <i class="fas fa-search"></i>
+                    <input type="text" placeholder="Search foods, symptoms, or resources...">
+                </div>
+                <div class="header-actions">
+                    <button class="btn-notification">
+                        <i class="fas fa-bell"></i>
+                        <span class="notification-badge">3</span>
+                    </button>
+                    <div class="user-profile">
+                        <img src="/api/placeholder/40/40" alt="User profile" class="user-avatar">
+                        <span>Jane Doe</span>
+                        <i class="fas fa-chevron-down"></i>
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Section -->
+            <section id="dashboard" class="content-section active">
+                <div class="section-header">
+                    <h2>Welcome back, Jane!</h2>
+                    <p class="subtitle">Here's your allergy overview for today</p>
+                </div>
+
+                <div class="dashboard-stats">
+                    <div class="stat-card">
+                        <div class="stat-icon safe">
+                            <i class="fas fa-check-circle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>14 Days</h3>
+                            <p>Reaction Free</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon warning">
+                            <i class="fas fa-exclamation-triangle"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>3 Foods</h3>
+                            <p>Flagged Yesterday</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon info">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>47 Meals</h3>
+                            <p>Tracked This Month</p>
+                        </div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-icon alert">
+                            <i class="fas fa-heartbeat"></i>
+                        </div>
+                        <div class="stat-info">
+                            <h3>2 Symptoms</h3>
+                            <p>Recorded This Week</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="dashboard-grid">
+                    <div class="dashboard-card symptom-trends">
+                        <div class="card-header">
+                            <h3>Symptom Trends</h3>
+                            <div class="card-actions">
+                                <button class="btn-card-action">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <canvas id="symptomChart"></canvas>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card quick-analyzer">
+                        <div class="card-header">
+                            <h3>Quick Food Check</h3>
+                            <div class="card-actions">
+                                <button class="btn-card-action">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="analyzer-form">
+                                <textarea placeholder="Paste ingredients or menu items here to quickly check for your allergens..."></textarea>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                    Analyze
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card recent-entries">
+                        <div class="card-header">
+                            <h3>Recent Journal Entries</h3>
+                            <div class="card-actions">
+                                <button class="btn-card-action">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <ul class="entry-list">
+                                <li class="entry-item">
+                                    <div class="entry-icon safe">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="entry-details">
+                                        <h4>Breakfast at Home</h4>
+                                        <p>Oatmeal with berries, no reactions</p>
+                                        <span class="entry-time">Today, 7:30 AM</span>
+                                    </div>
+                                </li>
+                                <li class="entry-item">
+                                    <div class="entry-icon warning">
+                                        <i class="fas fa-exclamation"></i>
+                                    </div>
+                                    <div class="entry-details">
+                                        <h4>Lunch at Cafe Verde</h4>
+                                        <p>Caesar salad, mild itching noticed</p>
+                                        <span class="entry-time">Yesterday, 12:45 PM</span>
+                                    </div>
+                                </li>
+                                <li class="entry-item">
+                                    <div class="entry-icon safe">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                    <div class="entry-details">
+                                        <h4>Dinner at Home</h4>
+                                        <p>Grilled chicken and vegetables, no reactions</p>
+                                        <span class="entry-time">Yesterday, 7:15 PM</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-text">View All Entries</button>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-card resources-card">
+                        <div class="card-header">
+                            <h3>Your Resources</h3>
+                            <div class="card-actions">
+                                <button class="btn-card-action">
+                                    <i class="fas fa-ellipsis-h"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="resource-grid">
+                                <div class="resource-item">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-file-medical"></i>
+                                    </div>
+                                    <h4>Emergency Plan</h4>
+                                    <button class="btn btn-sm">Download</button>
+                                </div>
+                                <div class="resource-item">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-utensils"></i>
+                                    </div>
+                                    <h4>Restaurant Cards</h4>
+                                    <button class="btn btn-sm">Download</button>
+                                </div>
+                                <div class="resource-item">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-plane"></i>
+                                    </div>
+                                    <h4>Travel Guide</h4>
+                                    <button class="btn btn-sm">Download</button>
+                                </div>
+                                <div class="resource-item">
+                                    <div class="resource-icon">
+                                        <i class="fas fa-book"></i>
+                                    </div>
+                                    <h4>Allergy Guide</h4>
+                                    <button class="btn btn-sm">Download</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Allergy Profile Section -->
+            <section id="profile" class="content-section">
+                <div class="section-header">
+                    <h2>My Allergy Profile</h2>
+                    <p class="subtitle">Manage your allergies, sensitivities, and symptoms</p>
+                </div>
+                
+                <div class="profile-grid">
+                    <div class="profile-card allergens-card">
+                        <div class="card-header">
+                            <h3>My Allergens</h3>
+                            <button class="btn btn-sm">
+                                <i class="fas fa-plus"></i> Add New
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <ul class="allergen-list">
+                                <li class="allergen-item severe">
+                                    <div class="allergen-info">
+                                        <h4>Peanuts</h4>
+                                        <span class="severity">Severe</span>
+                                    </div>
+                                    <div class="allergen-actions">
+                                        <button class="btn-icon">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="allergen-item moderate">
+                                    <div class="allergen-info">
+                                        <h4>Shellfish</h4>
+                                        <span class="severity">Moderate</span>
+                                    </div>
+                                    <div class="allergen-actions">
+                                        <button class="btn-icon">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="allergen-item mild">
+                                    <div class="allergen-info">
+                                        <h4>Dairy</h4>
+                                        <span class="severity">Mild</span>
+                                    </div>
+                                    <div class="allergen-actions">
+                                        <button class="btn-icon">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="allergen-item mild">
+                                    <div class="allergen-info">
+                                        <h4>Gluten</h4>
+                                        <span class="severity">Mild</span>
+                                    </div>
+                                    <div class="allergen-actions">
+                                        <button class="btn-icon">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                        <button class="btn-icon">
+                                            <i class="fas fa-trash"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card symptoms-card">
+                        <div class="card-header">
+                            <h3>Common Symptoms</h3>
+                            <button class="btn btn-sm">
+                                <i class="fas fa-plus"></i> Add New
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <ul class="symptom-list">
+                                <li class="symptom-item">
+                                    <div class="symptom-info">
+                                        <h4>Hives</h4>
+                                        <span class="allergen-tag">Peanuts, Shellfish</span>
+                                    </div>
+                                </li>
+                                <li class="symptom-item">
+                                    <div class="symptom-info">
+                                        <h4>Swelling</h4>
+                                        <span class="allergen-tag">Peanuts</span>
+                                    </div>
+                                </li>
+                                <li class="symptom-item">
+                                    <div class="symptom-info">
+                                        <h4>Stomach Pain</h4>
+                                        <span class="allergen-tag">Dairy, Gluten</span>
+                                    </div>
+                                </li>
+                                <li class="symptom-item">
+                                    <div class="symptom-info">
+                                        <h4>Itchy Throat</h4>
+                                        <span class="allergen-tag">Shellfish</span>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card medications-card">
+                        <div class="card-header">
+                            <h3>Medications</h3>
+                            <button class="btn btn-sm">
+                                <i class="fas fa-plus"></i> Add New
+                            </button>
+                        </div>
+                        <div class="card-body">
+                            <ul class="medication-list">
+                                <li class="medication-item">
+                                    <div class="medication-info">
+                                        <h4>Epinephrine Auto-Injector</h4>
+                                        <p>For severe reactions</p>
+                                    </div>
+                                    <div class="medication-actions">
+                                        <button class="btn-icon">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="medication-item">
+                                    <div class="medication-info">
+                                        <h4>Antihistamine</h4>
+                                        <p>For mild allergic reactions</p>
+                                    </div>
+                                    <div class="medication-actions">
+                                        <button class="btn-icon">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                                <li class="medication-item">
+                                    <div class="medication-info">
+                                        <h4>Corticosteroid Cream</h4>
+                                        <p>For skin reactions</p>
+                                    </div>
+                                    <div class="medication-actions">
+                                        <button class="btn-icon">
+                                            <i class="fas fa-edit"></i>
+                                        </button>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div class="profile-card cross-reactions-card">
+                        <div class="card-header">
+                            <h3>Cross-Reactions</h3>
+                            <div class="info-tooltip">
+                                <i class="fas fa-info-circle"></i>
+                                <span class="tooltip-text">Foods that may trigger similar reactions</span>
+                            </div>
+                        </div>
+                        <div class="card-body">
+                            <div class="cross-reaction-container">
+                                <div class="primary-allergen">
+                                    <h4>Peanuts</h4>
+                                </div>
+                                <div class="cross-reaction-items">
+                                    <span class="cross-item">Tree nuts</span>
+                                    <span class="cross-item">Legumes</span>
+                                    <span class="cross-item">Soy</span>
+                                </div>
+                            </div>
+                            <div class="cross-reaction-container">
+                                <div class="primary-allergen">
+                                    <h4>Shellfish</h4>
+                                </div>
+                                <div class="cross-reaction-items">
+                                    <span class="cross-item">Mollusks</span>
+                                    <span class="cross-item">Fish</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card-footer">
+                            <button class="btn btn-text">Learn More About Cross-Reactions</button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Food Analyzer Section -->
+            <section id="analyzer" class="content-section">
+                <div class="section-header">
+                    <h2>Food Safety Analyzer</h2>
+                    <p class="subtitle">Check ingredient lists and restaurant menus for allergens</p>
+                </div>
+
+                <div class="analyzer-container">
+                    <div class="analyzer-card">
+                        <div class="analyzer-tabs">
+                            <button class="analyzer-tab active" data-target="ingredients">
+                                <i class="fas fa-list"></i>
+                                Ingredient List
+                            </button>
+                            <button class="analyzer-tab" data-target="restaurant">
+                                <i class="fas fa-utensils"></i>
+                                Restaurant Menu
+                            </button>
+                            <button class="analyzer-tab" data-target="recipe">
+                                <i class="fas fa-book"></i>
+                                Recipe Check
+                            </button>
+                        </div>
+
+                        <div class="analyzer-input-container">
+                            <textarea class="analyzer-input" placeholder="Paste your ingredient list here..."></textarea>
+                            <div class="analyzer-actions">
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-camera"></i>
+                                    <span>Photo Scan</span>
+                                </button>
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-search"></i>
+                                    <span>Analyze</span>
+                                </button>
+                            </div>
+                        </div>
+
+                        <div class="analyzer-results">
+                            <div class="results-header">
+                                <h3>Analysis Results</h3>
+                                <div class="results-summary warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span>Potentially unsafe due to 2 allergens</span>
+                                </div>
+                            </div>
+
+                            <div class="results-content">
+                                <div class="detected-allergens">
+                                    <h4>Detected Allergens</h4>
+                                    <ul class="allergen-result-list">
+                                        <li class="allergen-result-item severe">
+                                            <i class="fas fa-times-circle"></i>
+                                            <div class="allergen-result-info">
+                                                <h5>Peanuts</h5>
+                                                <p>Found as: "peanut oil" (line 3)</p>
+                                            </div>
+                                        </li>
+                                        <li class="allergen-result-item moderate">
+                                            <i class="fas fa-exclamation-circle"></i>
+                                            <div class="allergen-result-info">
+                                                <h5>Dairy</h5>
+                                                <p>Found as: "whey protein" (line 5)</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="hidden-ingredients">
+                                    <h4>Hidden Ingredients</h4>
+                                    <ul class="hidden-ingredient-list">
+                                        <li class="hidden-ingredient-item">
+                                            <div class="hidden-ingredient-info">
+                                                <h5>Whey Protein</h5>
+                                                <p>Contains: <span class="allergen-highlight">Dairy</span></p>
+                                            </div>
+                                        </li>
+                                        <li class="hidden-ingredient-item">
+                                            <div class="hidden-ingredient-info">
+                                                <h5>Natural Flavors</h5>
+                                                <p>May contain multiple allergens</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+
+                                <div class="alternatives-section">
+                                    <h4>Suggested Alternatives</h4>
+                                    <ul class="alternatives-list">
+                                        <li class="alternative-item">
+                                            <div class="alternative-info">
+                                                <h5>Instead of Peanut Oil</h5>
+                                                <p>Try: Sunflower oil, Olive oil, Avocado oil</p>
+                                            </div>
+                                        </li>
+                                        <li class="alternative-item">
+                                            <div class="alternative-info">
+                                                <h5>Instead of Whey Protein</h5>
+                                                <p>Try: Pea protein, Hemp protein, Rice protein</p>
+                                            </div>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Symptom Journal Section -->
+            <section id="journal" class="content-section">
+                <div class="section-header">
+                    <h2>Symptom Journal</h2>
+                    <p class="subtitle">Track your meals and any reactions for pattern identification</p>
+                </div>
+
+                <div class="journal-controls">
+                    <div class="journal-view-controls">
+                        <button class="btn btn-control active">
+                            <i class="fas fa-calendar"></i>
+                            <span>Calendar</span>
+                        </button>
+                        <button class="btn btn-control">
+                            <i class="fas fa-list"></i>
+                            <span>List</span>
+                        </button>
+                        <button class="btn btn-control">
+                            <i class="fas fa-chart-bar"></i>
+                            <span>Analysis</span>
+                        </button>
+                    </div>
+                    <button class="btn btn-primary">
+                        <i class="fas fa-plus"></i>
+                        <span>New Entry</span>
+                    </button>
+                </div>
+
+                <div class="journal-calendar">
+                    <div class="calendar-header">
+                        <button class="btn-calendar-nav">
+                            <i class="fas fa-chevron-left"></i>
+                        </button>
+                        <h3>March 2025</h3>
+                        <button class="btn-calendar-nav">
+                            <i class="fas fa-chevron-right"></i>
+                        </button>
+                    </div>
+
+                    <div class="calendar-grid">
+                        <div class="calendar-weekdays">
+                            <span>Sun</span>
+                            <span>Mon</span>
+                            <span>Tue</span>
+                            <span>Wed</span>
+                            <span>Thu</span>
+                            <span>Fri</span>
+                            <span>Sat</span>
+                        </div>
+
+                        <div class="calendar-days">
+                            <!-- Previous Month -->
+                            <div class="calendar-day prev-month">23</div>
+                            <div class="calendar-day prev-month">24</div>
+                            <div class="calendar-day prev-month">25</div>
+                            <div class="calendar-day prev-month">26</div>
+                            <div class="calendar-day prev-month">27</div>
+                            <div class="calendar-day prev-month">28</div>
+                            
+                            <!-- Current Month -->
+                            <div class="calendar-day">1</div>
+                            <div class="calendar-day">2</div>
+                            <div class="calendar-day">3</div>
+                            <div class="calendar-day">4</div>
+                            <div class="calendar-day">5</div>
+                            <div class="calendar-day">6</div>
+                            <div class="calendar-day">7</div>
+                            <div class="calendar-day">8</div>
+                            <div class="calendar-day">9</div>
+                            <div class="calendar-day">10</div>
+                            <div class="calendar-day">11</div>
+                            <div class="calendar-day">12</div>
+                            <div class="calendar-day">13</div>
+                            <div class="calendar-day">14</div>
+                            <div class="calendar-day alert-day">15
+                                <span class="day-indicator"></span>
+                            </div>
+                            <div class="calendar-day">16</div>
+                            <div class="calendar-day">17</div>
+                            <div class="calendar-day warning-day">18
+                                <span class="day-indicator"></span>
+                            </div>
+                            <div class="calendar-day">19</div>
+                            <div class="calendar-day">20</div>
+                            <div class="calendar-day">21</div>
+                            <div class="calendar-day">22</div>
+                            <div class="calendar-day">23</div>
+                            <div class="calendar-day">24</div>
+                            <div class="calendar-day">25</div>
+                            <div class="calendar-day">26</div>
+                            <div class="calendar-day">27</div>
+                            <div class="calendar-day warning-day">28
+                                <span class="day-indicator"></span>
+                            </div>
+                            <div class="calendar-day today">29</div>
+                            <div class="calendar-day">30</div>
+                            <div class="calendar-day">31</div>
+                            
+                            <!-- Next Month -->
+                            <div class="calendar-day next-month">1</div>
+                            <div class="calendar-day next-month">2</div>
+                            <div class="calendar-day next-month">3</div>
+                            <div class="calendar-day next-month">4</div>
+                            <div class="calendar-day next-month">5</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="journal-entries">
+                    <h3>Recent Entries</h3>
+                    <div class="journal-entry-list">
+                        <div class="journal-entry">
+                            <div class="entry-header">
+                                <h4>March 29, 2025</h4>
+                                <div class="entry-status safe">
+                                    <i class="fas fa-check-circle"></i>
+                                    <span>No Reactions</span>
+                                </div>
+                            </div>
+                            <div class="entry-meals">
+                                <div class="meal-item">
+                                    <div class="meal-time">7:30 AM</div>
+                                    <div class="meal-details">
+                                        <h5>Breakfast</h5>
+                                        <p>Oatmeal with berries and honey</p>
+                                    </div>
+                                    <div class="meal-status safe">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                                <div class="meal-item">
+                                    <div class="meal-time">12:15 PM</div>
+                                    <div class="meal-details">
+                                        <h5>Lunch</h5>
+                                        <p>Grilled chicken salad</p>
+                                    </div>
+                                    <div class="meal-status safe">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="journal-entry">
+                            <div class="entry-header">
+                                <h4>March 28, 2025</h4>
+                                <div class="entry-status warning">
+                                    <i class="fas fa-exclamation-triangle"></i>
+                                    <span>Mild Reaction</span>
+                                </div>
+                            </div>
+                            <div class="entry-meals">
+                                <div class="meal-item">
+                                    <div class="meal-time">8:00 AM</div>
+                                    <div class="meal-details">
+                                        <h5>Breakfast</h5>
+                                        <p>Toast with avocado</p>
+                                    </div>
+                                    <div class="meal-status safe">
+                                        <i class="fas fa-check"></i>
+                                    </div>
+                                </div>
+                                <div class="meal-item">
+                                    <div class="meal-time">1:00 PM</div>
+                                    <div class="meal-details">
+                                        <h5>Lunch</h5>
+                                        <p>Pasta with tomato sauce</p>
+                                    </div>
+                                    <div class="meal-status warning">
+                                        <i class="fas fa-exclamation"></i>
+                                    </div>
+                                </div>
+                                <div class="entry-symptoms">
+                                    <h5>Symptoms Reported:</h5>
+                                    <p>Mild stomach discomfort, lasted approximately 1 hour</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Resources Section -->
+            <section id="resources" class="content-section">
+                <div class="section-header">
+                    <h2>My Resources</h2>
+                    <p class="subtitle">Personalized guides and downloadable materials</p>
+                </div>
+
+                <div class="resources-grid">
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-file-medical"></i>
+                        </div>
+                        <div class="resource-details">
+                            <h3>Emergency Action Plan</h3>
+                            <p>Personalized plan with your allergens and emergency contacts</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-download"></i>
+                                    Download PDF
+                                </button>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-edit"></i>
+                                    Edit Plan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-utensils"></i>
+                        </div>
+                        <div class="resource-details">
+                            <h3>Restaurant Chef Cards</h3>
+                            <p>Customized cards to show restaurant staff about your allergies</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-download"></i>
+                                    Download PDF
+                                </button>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-edit"></i>
+                                    Edit Cards
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-plane"></i>
+                        </div>
+                        <div class="resource-details">
+                            <h3>Travel Guide</h3>
+                            <p>Managing your allergies while traveling abroad</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-download"></i>
+                                    Download PDF
+                                </button>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-language"></i>
+                                    Translate
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-school"></i>
+                        </div>
+                        <div class="resource-details">
+                            <h3>School/Work Plan</h3>
+                            <p>Information sheets for schools, workplaces, or caregivers</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-download"></i>
+                                    Download PDF
+                                </button>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-edit"></i>
+                                    Edit Plan
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-book-medical"></i>
+                        </div>
+                        <div class="resource-details">
+                            <h3>Allergy Education</h3>
+                            <p>Personalized learning modules about your specific allergies</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-play"></i>
+                                    Start Learning
+                                </button>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-share"></i>
+                                    Share
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="resource-card">
+                        <div class="resource-icon">
+                            <i class="fas fa-tag"></i>
+                        </div>
+                        <div class="resource-details">
+                            <h3>Food Label Guide</h3>
+                            <p>Interactive guide for reading and understanding food labels</p>
+                            <div class="resource-actions">
+                                <button class="btn btn-primary">
+                                    <i class="fas fa-download"></i>
+                                    Download PDF
+                                </button>
+                                <button class="btn btn-secondary">
+                                    <i class="fas fa-play"></i>
+                                    Interactive Guide
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Settings will be hidden by default -->
+            <section id="settings" class="content-section">
+                <div class="section-header">
+                    <h2>Settings</h2>
+                    <p class="subtitle">Manage your account and preferences</p>
+                </div>
+
+                <div class="settings-container">
+                    <!-- Settings content -->
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script type="module" src="script.js"></script>
+</body>
+</html>
