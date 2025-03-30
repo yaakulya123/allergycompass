@@ -25,7 +25,7 @@
 
 AllergyCompass is an intelligent food allergen detection and management system that leverages advanced AI to help users navigate their dietary restrictions with confidence. Our application analyzes ingredient lists through sophisticated natural language processing, identifies potential allergens, detects cross-reactivity patterns, and provides personalized recommendations tailored to each user's unique allergen profile.
 
-Developed for [Hackathon Name], AllergyCompass tackles the daily challenge faced by millions with food allergies and sensitivities: safely identifying what they can eat without triggering reactions.
+Developed for [HackPrinceton 2025], AllergyCompass tackles the daily challenge faced by millions with food allergies and sensitivities: safely identifying what they can eat without triggering reactions.
 
 
 #### Link to Project : https://yaakulya123.github.io/allergycompass/
