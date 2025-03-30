@@ -1,11 +1,10 @@
 # AllergyCompass 🧭
 
 <p align="center">
-  <img src="https://via.placeholder.com/150" alt="AllergyCompass Logo" width="150"/>
+  <img src="https://via.placeholder.com/150" alt="Project: AllergyCompass" width="150"/>
   <br>
   <em>Navigate your dietary restrictions with confidence</em>
 </p>
-
 
 
 <p align="center">
@@ -16,9 +15,10 @@
   <a href="#ai-implementation">AI Implementation</a> •
   <a href="#getting-started">Getting Started</a> •
   <a href="#usage-examples">Usage Examples</a> •
-  <a href="#demo">Demo</a> •
   <a href="#team">Team</a>
 </p>
+
+![image](https://github.com/user-attachments/assets/e5f259dd-3b71-4505-bd10-5277ea5abdbf)
 
 
 ## Overview
@@ -161,9 +161,9 @@ Record symptoms after meals to enable:
 
 | Name | Role | GitHub |
 |------|------|--------|
-| [Team Member 1: Yaakulya Sabbani] | [Hacker] | [@github](https://github.com/) |
-| [Team Member 2: Rehnuma Taskin] | [Front End] | [@github](https://github.com/) |
-| [Team Member 3: Xichen Zhang] | [Frond End] | [@github](https://github.com/) |
+| [Team Member 1: Yaakulya Sabbani] | [Hacker: BasedCode + Api Integration] | [@github](https://github.com/) |
+| [Team Member 2: Rehnuma Taskin] | [Front End: Data Visualization] | [@github]([https://github.com/](https://github.com/TaskinRe)) |
+| [Team Member 3: Xichen Zhang] | [Ideation + Prototyping] | [@github]([https://github.com/](https://github.com/Cmint9)) |
 
 
 ## Acknowledgments
@@ -172,10 +172,6 @@ Record symptoms after meals to enable:
 - OpenAI for GPT API access
 - Open Food Facts for their comprehensive food database
 - Edamam for nutritional data API
-
-## License
-
-This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
 
 ---
 
