@@ -162,8 +162,8 @@ Record symptoms after meals to enable:
 | Name | Role | GitHub |
 |------|------|--------|
 | [Team Member 1: Yaakulya Sabbani] | [Hacker: BasedCode + Api Integration] | [@github](https://github.com/) |
-| [Team Member 2: Rehnuma Taskin] | [Front End: Data Visualization] | [@github]([https://github.com/](https://github.com/TaskinRe)) |
-| [Team Member 3: Xichen Zhang] | [Ideation + Prototyping] | [@github]([https://github.com/](https://github.com/Cmint9)) |
+| [Team Member 2: Rehnuma Taskin] | [Front End: Data Visualization] | [@github](https://github.com/TaskinRe) |
+| [Team Member 3: Xichen Zhang] | [Ideation + Prototyping] | [@github](https://github.com/Cmint9) |
 
 
 ## Acknowledgments
