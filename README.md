@@ -159,10 +159,13 @@ Record symptoms after meals to enable:
 
 Integration with the TxGemma database provides access to comprehensive cross-reactivity matrices and molecular-level allergen profiling beyond traditional taxonomic classification. This implementation will make the project more accurate by using recent advances in proteomics to identify shared epitopes responsible for cross-sensitization phenomena not captured by conventional allergen databases. 
 
-###Technical Implementation Roadmap
+### Technical Implementation Roadmap
 
 The AllergyCompass platform will be implemented through a multi-agent architecture powered by Firebase Genkit, featuring:
 javascriptCopy// Core Triage Agent Implementation
+
+```
+// Core Triage Agent Implementation
 const triageAgentFlow = ai.defineFlow({
   name: 'triageAgent',
   inputSchema: z.string(),
@@ -210,7 +213,7 @@ const txGammaIntegrationTool = ai.defineTool({
   });
   return response.data;
 });
-
+```
 - Mobile application with camera integration for real-time label scanning
 - Restaurant menu analyzer with pre-dining recommendations
 - Social sharing features for allergen-friendly restaurants and products
