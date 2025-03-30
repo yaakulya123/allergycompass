@@ -1,4 +1,4 @@
-# AllergyCompass 🧭
+# AllergyCompass
 
 <p align="center">
   <img src="https://via.placeholder.com/150" alt="Project: AllergyCompass" width="150"/>
@@ -33,13 +33,19 @@ Developed for [Hackathon Name], AllergyCompass tackles the daily challenge faced
 
 ## Key Features
 
-- **🔍 Smart Allergen Detection**: Advanced AI-powered scanning of ingredient lists to identify potential allergens even when they appear under alternative names
-- **🔄 Cross-Reactivity Analysis**: Sophisticated identification of potential allergic reactions based on known and emerging cross-reactivity patterns
-- **👤 Personalized Recommendations**: Custom alternative food suggestions based on user-specific allergen profiles and severity levels
-- **📊 Symptom Pattern Recognition**: Machine learning algorithms to identify patterns in user-reported symptoms and correlate with specific ingredients
-- **📱 Interactive Dashboard**: Real-time visualization of allergen exposure, reaction frequency, and symptom correlation
-- **🔌 Offline Capability**: Robust local storage implementation for seamless user experience regardless of connectivity
+- ** Smart Allergen Detection**: Advanced AI-powered scanning of ingredient lists to identify potential allergens even when they appear under alternative names
+- ** Cross-Reactivity Analysis**: Sophisticated identification of potential allergic reactions based on known and emerging cross-reactivity patterns
+- ** Personalized Recommendations**: Custom alternative food suggestions based on user-specific allergen profiles and severity levels
+- ** Symptom Pattern Recognition**: Machine learning algorithms to identify patterns in user-reported symptoms and correlate with specific ingredients
+- ** Interactive Dashboard**: Real-time visualization of allergen exposure, reaction frequency, and symptom correlation
+- ** Offline Capability**: Robust local storage implementation for seamless user experience regardless of connectivity
 
+## Background Research: 
+
+### Healthcare System Crisis: Dual Epidemics of Provider Burnout and Long COVID
+The healthcare ecosystem faces unprecedented challenges characterized by two concurrent epidemiological phenomena. Healthcare worker burnout has reached critical levels with 49.9% prevalence across roles, with highest rates among nursing (56.0%) and clinical staff (54.1%) (Rotenstein et al., 2023). This crisis has precipitated substantial workforce attrition, with projections indicating a deficit of 4+ million healthcare workers by 2026 if current trends continue (Oracle Health, 2023).
+Concurrently, post-COVID cognitive sequelae represent an emerging public health concern. Longitudinal studies demonstrate measurable cognitive deficits in COVID-19 survivors, with severity-dependent impairment ranging from 3-point IQ reduction in mild cases to 9-point deficits in hospitalized patients (Hampshire et al., 2024). These impairments manifest primarily in executive function, information processing speed, and memory domains - essential capacities for medication management and symptom recognition. 
+   
 ## Technology Stack
 
 - **Frontend**: HTML5, CSS3, JavaScript (ES6+)
@@ -150,6 +156,60 @@ Record symptoms after meals to enable:
 - Exportable reports for healthcare provider consultation
 
 ## Future Enhancements
+
+Integration with the TxGemma database provides access to comprehensive cross-reactivity matrices and molecular-level allergen profiling beyond traditional taxonomic classification. This implementation will make the project more accurate by using recent advances in proteomics to identify shared epitopes responsible for cross-sensitization phenomena not captured by conventional allergen databases. 
+
+###Technical Implementation Roadmap
+
+The AllergyCompass platform will be implemented through a multi-agent architecture powered by Firebase Genkit, featuring:
+javascriptCopy// Core Triage Agent Implementation
+const triageAgentFlow = ai.defineFlow({
+  name: 'triageAgent',
+  inputSchema: z.string(),
+  outputSchema: z.string(),
+}, async (userInput) => {
+  // Intent classification and routing logic
+  if (userInput.toLowerCase().includes('allergy') || 
+      userInput.toLowerCase().includes('reaction')) {
+    const allergyResults = await ai.useTool('detectAllergen', { 
+      allergenData: userInput,
+      patientProfile: await getUserProfile()
+    });
+    return generateResponse(allergyResults);
+  } else if (userInput.toLowerCase().includes('symptom') || 
+             userInput.toLowerCase().includes('feel')) {
+    const symptomResults = await ai.useTool('detectSymptomPattern', { 
+      symptomData: userInput,
+      historicalData: await getPatientHistory()
+    });
+    return generateResponse(symptomResults);
+  }
+});
+
+// TxGamma Database Integration
+const txGammaIntegrationTool = ai.defineTool({
+  name: 'queryTxGamma',
+  description: 'Queries the TxGamma cross-reactivity database for molecular allergen analysis',
+  inputSchema: z.object({ 
+    allergenIdentifiers: z.array(z.string()),
+    molecularComponents: z.boolean().optional()
+  }),
+  outputSchema: z.object({
+    crossReactivityProfile: z.array(z.object({
+      relatedAllergen: z.string(),
+      confidenceScore: z.number(),
+      molecularMechanism: z.string().optional()
+    }))
+  })
+}, async (input) => {
+  // Implementation of secure API call to TxGamma
+  const response = await secureAPICall('https://api.txgamma.org/molecular-profile', {
+    method: 'POST',
+    headers: { 'Authorization': `Bearer ${await getAPIToken()}` },
+    body: JSON.stringify(input)
+  });
+  return response.data;
+});
 
 - Mobile application with camera integration for real-time label scanning
 - Restaurant menu analyzer with pre-dining recommendations
