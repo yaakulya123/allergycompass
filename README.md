@@ -223,7 +223,7 @@ const txGammaIntegrationTool = ai.defineTool({
 | Name | Role | GitHub |
 |------|------|--------|
 | [Team Member 1: Yaakulya Sabbani] | [Hacker: BasedCode + Api Integration] | [@github](https://github.com/) |
-| [Team Member 2: Rehnuma Taskin] | [Front End: Data Visualization] | [@github](https://github.com/TaskinRe) |
+| [Team Member 2: Rehnuma Taskin] | [Front End: Idea + Research + Data Visualization] | [@github](https://github.com/TaskinRe) |
 | [Team Member 3: Xichen Zhang] | [Ideation + Prototyping] | [@github](https://github.com/Cmint9) |
 
 
