@@ -31,12 +31,12 @@ Developed for HackPrinceton 2025, AllergyCompass tackles the daily challenge fac
 
 ## Key Features
 
--  Smart Allergen Detection**: Advanced AI-powered scanning of ingredient lists to identify potential allergens even when they appear under alternative names
--  Cross-Reactivity Analysis**: Sophisticated identification of potential allergic reactions based on known and emerging cross-reactivity patterns
--  Personalized Recommendations**: Custom alternative food suggestions based on user-specific allergen profiles and severity levels
--  Symptom Pattern Recognition**: Machine learning algorithms to identify patterns in user-reported symptoms and correlate with specific ingredients
--  Interactive Dashboard**: Real-time visualization of allergen exposure, reaction frequency, and symptom correlation
--  Offline Capability**: Robust local storage implementation for seamless user experience regardless of connectivity
+-  Smart Allergen Detection: Advanced AI-powered scanning of ingredient lists to identify potential allergens even when they appear under alternative names
+-  Cross-Reactivity Analysis: Sophisticated identification of potential allergic reactions based on known and emerging cross-reactivity patterns
+-  Personalized Recommendations: Custom alternative food suggestions based on user-specific allergen profiles and severity levels
+-  Symptom Pattern Recognition: Machine learning algorithms to identify patterns in user-reported symptoms and correlate with specific ingredients
+-  Interactive Dashboard: Real-time visualization of allergen exposure, reaction frequency, and symptom correlation
+-  Offline Capability: Robust local storage implementation for seamless user experience regardless of connectivity
 
 ## Background Research: 
 
@@ -223,7 +223,7 @@ const txGammaIntegrationTool = ai.defineTool({
 | Name | Role | GitHub |
 |------|------|--------|
 | [Team Member 1: Yaakulya Sabbani] | [Hacker: BasedCode + Api Integration] | [@github](https://github.com/) |
-| [Team Member 2: Rehnuma Taskin] | [Front End: Idea + Research + Data Visualization] | [@github](https://github.com/TaskinRe) |
+| [Team Member 2: Rehnuma Taskin] | [Ideation + Front End + Data Visualization] | [@github](https://github.com/TaskinRe) |
 | [Team Member 3: Xichen Zhang] | [Ideation + Prototyping] | [@github](https://github.com/Cmint9) |
 
 
