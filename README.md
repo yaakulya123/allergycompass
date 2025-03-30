@@ -1,9 +1,7 @@
 # AllergyCompass
 
 <p align="center">
-  <img src="https://via.placeholder.com/150" alt="Project: AllergyCompass" width="150"/>
-  <br>
-  <em>Navigate your dietary restrictions with confidence</em>
+Navigate your dietary restrictions with confidence
 </p>
 
 
