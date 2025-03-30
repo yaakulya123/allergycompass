@@ -23,7 +23,7 @@ Navigate your dietary restrictions with confidence
 
 AllergyCompass is an intelligent food allergen detection and management system that leverages advanced AI to help users navigate their dietary restrictions with confidence. Our application analyzes ingredient lists through sophisticated natural language processing, identifies potential allergens, detects cross-reactivity patterns, and provides personalized recommendations tailored to each user's unique allergen profile.
 
-Developed for [HackPrinceton 2025], AllergyCompass tackles the daily challenge faced by millions with food allergies and sensitivities: safely identifying what they can eat without triggering reactions.
+Developed for HackPrinceton 2025, AllergyCompass tackles the daily challenge faced by millions with food allergies and sensitivities: safely identifying what they can eat without triggering reactions.
 
 
 #### Link to Project : https://yaakulya123.github.io/allergycompass/
@@ -31,12 +31,12 @@ Developed for [HackPrinceton 2025], AllergyCompass tackles the daily challenge f
 
 ## Key Features
 
-- ** Smart Allergen Detection**: Advanced AI-powered scanning of ingredient lists to identify potential allergens even when they appear under alternative names
-- ** Cross-Reactivity Analysis**: Sophisticated identification of potential allergic reactions based on known and emerging cross-reactivity patterns
-- ** Personalized Recommendations**: Custom alternative food suggestions based on user-specific allergen profiles and severity levels
-- ** Symptom Pattern Recognition**: Machine learning algorithms to identify patterns in user-reported symptoms and correlate with specific ingredients
-- ** Interactive Dashboard**: Real-time visualization of allergen exposure, reaction frequency, and symptom correlation
-- ** Offline Capability**: Robust local storage implementation for seamless user experience regardless of connectivity
+-  Smart Allergen Detection**: Advanced AI-powered scanning of ingredient lists to identify potential allergens even when they appear under alternative names
+-  Cross-Reactivity Analysis**: Sophisticated identification of potential allergic reactions based on known and emerging cross-reactivity patterns
+-  Personalized Recommendations**: Custom alternative food suggestions based on user-specific allergen profiles and severity levels
+-  Symptom Pattern Recognition**: Machine learning algorithms to identify patterns in user-reported symptoms and correlate with specific ingredients
+-  Interactive Dashboard**: Real-time visualization of allergen exposure, reaction frequency, and symptom correlation
+-  Offline Capability**: Robust local storage implementation for seamless user experience regardless of connectivity
 
 ## Background Research: 
 
@@ -46,10 +46,10 @@ Concurrently, post-COVID cognitive sequelae represent an emerging public health 
    
 ## Technology Stack
 
-- **Frontend**: HTML5, CSS3, JavaScript (ES6+)
-- **Data Visualization**: Chart.js
-- **PDF Generation**: jsPDF
-- **API Integrations**:
+- Frontend: HTML5, CSS3, JavaScript (ES6+)
+- Data Visualization: Chart.js
+- PDF Generation: jsPDF
+- API Integrations:
   - OpenAI GPT API for intelligent allergen analysis and recommendations
   - Open Food Facts API for comprehensive ingredient data retrieval
   - Edamam API for nutritional information and alternative food suggestions
@@ -72,31 +72,31 @@ AllergyCompass employs a sophisticated architecture with dedicated service modul
 ```
 
 Our implementation prioritizes:
-- **Performance**: Asynchronous processing for uninterrupted user experience
-- **Privacy**: Local-first data approach with user control over shared information
-- **Extensibility**: Modular design allowing for easy integration of additional allergen databases
-- **Accessibility**: WCAG-compliant interface usable by individuals with various accessibility needs
+- Performance: Asynchronous processing for uninterrupted user experience
+- Privacy: Local-first data approach with user control over shared information
+- Extensibility: Modular design allowing for easy integration of additional allergen databases
+- Accessibility: WCAG-compliant interface usable by individuals with various accessibility needs
 
 ## AI Implementation
 
 The core of AllergyCompass is its intelligent allergen detection system, which leverages multiple advanced techniques:
 
-1. **Natural Language Processing**: Using GPT-4 to understand and extract allergen information from unstructured ingredient lists, including detecting:
+1. Natural Language Processing: Using GPT-4 to understand and extract allergen information from unstructured ingredient lists, including detecting:
    - Common allergen names and their derivatives
    - Scientific and alternative ingredient names
    - Processing additives that may contain allergen traces
 
-2. **Knowledge Graph**: Implementation of allergen relationship mapping to identify hidden cross-reactivity risks based on:
+2. Knowledge Graph: Implementation of allergen relationship mapping to identify hidden cross-reactivity risks based on:
    - Protein structure similarities
    - Documented cross-reactivity patterns
    - Geographical and botanical relationships between allergens
 
-3. **Retrieval Augmented Generation (RAG)**: Enhanced AI responses with specialized allergen knowledge base containing:
+3. Retrieval Augmented Generation (RAG): Enhanced AI responses with specialized allergen knowledge base containing:
    - Peer-reviewed medical information on allergen profiles
    - Regulatory data on labeling requirements
    - User-contributed observations on uncommon reactions
 
-4. **Progressive Learning**: System improves recommendations based on user feedback and symptom journal entries through:
+4. Progressive Learning: System improves recommendations based on user feedback and symptom journal entries through:
    - Continuous model fine-tuning
    - Personalized sensitivity threshold adjustment
    - Community-informed safety ratings
